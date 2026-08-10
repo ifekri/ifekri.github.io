@@ -1,0 +1,11 @@
+main:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Work
+    url: /projects/
+  - title: Field notes
+    url: /posts/
+  - title: Tags
+    url: /tags/

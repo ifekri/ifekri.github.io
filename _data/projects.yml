@@ -1,0 +1,41 @@
+- name: signalkit
+  category: Library
+  status: Open source
+  description: A zero-dependency event bus for Python. Typed channels, backpressure, and structured logging out of the box.
+  stack: [Python, asyncio]
+  url: https://github.com/iFekri
+
+- name: wiretap
+  category: CLI
+  status: Open source
+  description: Terminal traffic inspector. Captures HTTP and gRPC streams, pretty-prints payloads, and filters by route or status.
+  stack: [Rust, CLI]
+  url: https://github.com/iFekri
+
+- name: gridlock
+  category: Infrastructure
+  status: In use
+  description: Terraform modules for multi-region failover. VPC mesh, health probes, and automatic DNS cutover.
+  stack: [Terraform, AWS]
+  url: https://github.com/iFekri
+
+- name: nocturne
+  category: Web
+  status: Shipping
+  description: A dark-mode-first dashboard shell. Keyboard-first navigation, live metrics, and offline-ready shell.
+  stack: [TypeScript, Next.js]
+  url: https://github.com/iFekri
+
+- name: ledgerline
+  category: Systems
+  status: Open source
+  description: Append-only log with cryptographic seals. Built for audit trails that cannot be quietly rewritten.
+  stack: [Go, SQLite]
+  url: https://github.com/iFekri
+
+- name: relayboard
+  category: Tooling
+  status: Prototype
+  description: Local-first task board that syncs over git. No SaaS, no accounts, just commits.
+  stack: [Rust, Git]
+  url: https://github.com/iFekri

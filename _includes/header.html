@@ -1,0 +1,83 @@
+<header class="site-header" id="site-header">
+  <div class="header-bar">
+    <div class="header-meta" aria-hidden="true">
+      <span class="meta-chip">
+        <span class="meta-dot"></span>
+        LINK SECURE
+      </span>
+      <span class="meta-chip meta-chip--dim">CH-07</span>
+      <span class="meta-chip meta-chip--dim" id="header-clock">--:--:--Z</span>
+    </div>
+
+    <div class="header-main">
+      <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="{{ site.title }} home">
+        <span class="logo-mark" aria-hidden="true">
+          <span class="logo-corner logo-corner--tl"></span>
+          <span class="logo-corner logo-corner--br"></span>
+          <span class="logo-glyph">PX</span>
+        </span>
+        <span class="logo-copy">
+          <span class="logo-name">{{ site.title }}</span>
+          <span class="logo-tag">{{ site.tagline }}</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" role="navigation" aria-label="Main">
+        {% for item in site.data.navigation.main %}
+        <a
+          href="{{ item.url | relative_url }}"
+          class="nav-link{% if page.url == item.url or page.url == item.url | append: 'index.html' %} is-active{% elsif item.url != '/' and page.url contains item.url %} is-active{% endif %}"
+        >
+          <span class="nav-index" aria-hidden="true">0{{ forloop.index }}</span>
+          <span class="nav-label">{{ item.title }}</span>
+        </a>
+        {% endfor %}
+      </nav>
+
+      <div class="header-actions">
+        {% if site.owner.github %}
+        <a
+          href="https://github.com/{{ site.owner.github }}"
+          class="header-icon"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+        {% endif %}
+
+        {% if site.owner.gitlab %}
+        <a
+          href="https://gitlab.com/{{ site.owner.gitlab }}"
+          class="header-icon"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitLab profile"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 0 0-.867 0L16.418 9.45H7.582L4.919 1.263a.455.455 0 0 0-.867 0L1.388 9.452.045 13.587a.924.924 0 0 0 .331 1.023L12 23.054l11.624-8.443a.92.92 0 0 0 .331-1.024"/>
+          </svg>
+        </a>
+        {% endif %}
+
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    {% for item in site.data.navigation.main %}
+    <a href="{{ item.url | relative_url }}" class="mobile-nav-link">
+      <span class="nav-index">0{{ forloop.index }}</span>
+      <span>{{ item.title }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</header>

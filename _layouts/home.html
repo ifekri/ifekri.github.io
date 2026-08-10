@@ -1,0 +1,257 @@
+---
+layout: default
+---
+<div class="home">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+          <p class="hero-kicker">
+            <span class="kicker-dot" aria-hidden="true"></span>
+            {{ site.owner.status | default: "Online" }}
+          </p>
+
+          <h1 class="hero-title">
+            I build systems<br>
+            that <em class="text-accent">stay up</em><br>
+            under pressure.
+          </h1>
+
+          <p class="hero-sub">{{ site.owner.bio }}</p>
+
+          <div class="hero-actions">
+            <a href="{{ '/projects' | relative_url }}" class="btn btn-primary">
+              <span>View work</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a href="{{ '/posts' | relative_url }}" class="btn btn-ghost">Field notes</a>
+          </div>
+        </div>
+
+        <div class="hero-console" aria-label="System status console">
+          <div class="console-frame">
+            <div class="console-header">
+              <div class="console-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="console-title">operator@iFekri:~</span>
+              <span class="console-badge">LIVE</span>
+            </div>
+            <div class="console-body" id="hero-console-body">
+              <div class="console-line" data-type="cmd">
+                <span class="console-prompt">$</span>
+                <span class="console-text" data-text="whoami --verbose"></span>
+              </div>
+              <div class="console-line" data-type="out">
+                <span class="console-text text-accent">{{ site.owner.name }}</span>
+              </div>
+              <div class="console-line" data-type="out">
+                <span class="console-text text-dim">{{ site.owner.role | default: "Systems engineer" }}</span>
+              </div>
+              <div class="console-line" data-type="cmd">
+                <span class="console-prompt">$</span>
+                <span class="console-text" data-text="status --services"></span>
+              </div>
+              <div class="console-line" data-type="out">
+                <span class="console-text"><span class="ok-mark">✓</span> core systems</span>
+                <span class="console-state">NOMINAL</span>
+              </div>
+              <div class="console-line" data-type="out">
+                <span class="console-text"><span class="ok-mark">✓</span> open source</span>
+                <span class="console-state">ACTIVE</span>
+              </div>
+              <div class="console-line" data-type="out">
+                <span class="console-text"><span class="ok-mark">✓</span> availability</span>
+                <span class="console-state text-accent">{{ site.owner.status | default: "OPEN" | upcase }}</span>
+              </div>
+              <div class="console-line" data-type="cmd">
+                <span class="console-prompt">$</span>
+                <span class="console-text" data-text="locate --operator"></span>
+              </div>
+              <div class="console-line" data-type="out">
+                <span class="console-text text-dim">{{ site.owner.location | default: "Remote" }} · UTC synced</span>
+              </div>
+              <div class="console-line console-cursor-line">
+                <span class="console-prompt">$</span>
+                <span class="console-cursor" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-coords" aria-hidden="true">
+            <span>LAT {{ "now" | date: "%H%M" }}E</span>
+            <span>LON {{ "now" | date: "%M%S" }}W</span>
+            <span>ALT SEA-LEVEL</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT NOTES -->
+  <section class="section" id="recent-notes">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Recent field notes</h2>
+        <a href="{{ '/posts' | relative_url }}" class="section-more">All notes →</a>
+      </div>
+
+      <div class="notes-grid">
+        {% for post in site.posts limit:3 %}
+        <article class="note-card">
+          <div class="note-card-top">
+            <time class="note-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d"
+              }}</time>
+            {% if post.categories.size > 0 %}
+            <span class="note-cat">{{ post.categories | first }}</span>
+            {% endif %}
+          </div>
+          <h3 class="note-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+          <p class="note-excerpt">{{ post.excerpt | strip_html | truncatewords: 22 }}</p>
+          <div class="note-card-bottom">
+            <span class="note-time">{{ post.content | number_of_words | divided_by: 200 | ceil }} min</span>
+            <span class="note-arrow" aria-hidden="true">→</span>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="section section-alt" id="capabilities">
+    <div class="container">
+      <h2 class="section-title section-title--center">Operational range</h2>
+
+      <div class="cap-grid">
+        <div class="cap-block">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M4 17l6-6-6-6M12 19h8" />
+            </svg>
+          </div>
+          <h3 class="cap-name">Systems</h3>
+          <p class="cap-desc">Low-level work in Rust and Go. Performance budgets, memory discipline, no magic.</p>
+          <div class="cap-tags">
+            <span>Rust</span><span>Go</span><span>C</span>
+          </div>
+        </div>
+
+        <div class="cap-block">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path d="M7 8h10M7 12h6" />
+            </svg>
+          </div>
+          <h3 class="cap-name">Platforms</h3>
+          <p class="cap-desc">Full-stack web apps that load fast and fail gracefully. APIs designed to be used, not
+            admired.</p>
+          <div class="cap-tags">
+            <span>TypeScript</span><span>Python</span><span>PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="cap-block">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4" />
+            </svg>
+          </div>
+          <h3 class="cap-name">Infrastructure</h3>
+          <p class="cap-desc">CI/CD, containers, and cloud plumbing that stays boring. Boring is the goal.</p>
+          <div class="cap-tags">
+            <span>Terraform</span><span>Docker</span><span>AWS</span>
+          </div>
+        </div>
+
+        <div class="cap-block">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 3" />
+            </svg>
+          </div>
+          <h3 class="cap-name">Reliability</h3>
+          <p class="cap-desc">Observability, alerting, and incident response. Sleep is a feature, not a luxury.</p>
+          <div class="cap-tags">
+            <span>Prometheus</span><span>Grafana</span><span>On-call</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK - live from GitHub + GitLab -->
+  <section class="section" id="selected-work">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Selected work</h2>
+        <a href="{{ '/projects' | relative_url }}" class="section-more">All projects →</a>
+      </div>
+
+      <div id="repo-list" class="work-list" data-repos-source="{{ site.repos.source | default: 'both' }}"
+        data-github-user="{{ site.github.username | default: site.owner.github }}"
+        data-github-enabled="{{ site.github.enabled | default: true }}" data-github-token="{{ site.github.token }}"
+        data-github-exclude="{{ site.github.exclude | join: ',' }}"
+        data-github-pinned="{{ site.github.pinned | join: ',' }}"
+        data-gitlab-user="{{ site.gitlab.username | default: site.owner.gitlab }}"
+        data-gitlab-host="{{ site.gitlab.host | default: 'https://gitlab.com' }}"
+        data-gitlab-enabled="{{ site.gitlab.enabled | default: true }}" data-gitlab-token="{{ site.gitlab.token }}"
+        data-gitlab-exclude="{{ site.gitlab.exclude | join: ',' }}"
+        data-gitlab-pinned="{{ site.gitlab.pinned | join: ',' }}"
+        data-per-page="{{ site.github.per_page | default: 100 }}"
+        data-home-limit="{{ site.repos.home_limit | default: 4 }}"
+        data-exclude-forks="{{ site.repos.exclude_forks | default: true }}"
+        data-exclude-archived="{{ site.repos.exclude_archived | default: true }}"
+        data-sort-by="{{ site.repos.sort_by | default: 'updated' }}" data-mode="rows" aria-live="polite">
+        <div class="repo-loading repo-loading--inline">
+          <span class="repo-spinner" aria-hidden="true"></span>
+          <span>Syncing repositories…</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section class="section section-alt" id="contact-strip">
+    <div class="container">
+      <div class="contact-panel">
+        <div class="contact-copy">
+          <h2 class="contact-title">Open a channel</h2>
+          <p class="contact-sub">Contracts, collaborations, or hard problems worth solving. I reply within a day.</p>
+        </div>
+        <div class="contact-actions">
+          {% if site.owner.email %}
+          <a href="mailto:{{ site.owner.email }}" class="btn btn-primary">
+            <span>Send email</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="M3 7l9 6 9-6" />
+            </svg>
+          </a>
+          {% endif %}
+          {% if site.owner.github %}
+          <a href="https://github.com/{{ site.owner.github }}" class="btn btn-ghost" target="_blank"
+            rel="noopener noreferrer">GitHub</a>
+          {% endif %}
+          {% if site.owner.gitlab %}
+          <a href="https://gitlab.com/{{ site.owner.gitlab }}" class="btn btn-ghost" target="_blank"
+            rel="noopener noreferrer">GitLab</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

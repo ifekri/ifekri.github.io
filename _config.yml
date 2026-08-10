@@ -1,0 +1,149 @@
+# ============================================================
+# iFekri - Jekyll Template
+# Operator console aesthetic for developer portfolios
+# ============================================================
+#
+# SETUP: Change the values under "Owner" and the repository
+# feeds below. Everything else works out of the box.
+# See README.md for the full guide.
+# ============================================================
+
+# Site
+title: "iFekri"
+tagline: "Signal clear. Systems online."
+description: "Developer portfolio and field notes. Built for people who ship."
+url: "https://iFekri.github.io"
+baseurl: ""
+lang: en
+timezone: America/New_York
+
+# Owner — fill these in with your details
+owner:
+  name: "ifekri"
+  handle: "ifekri"
+  role: "Systems engineer"
+  bio: "I design software that stays up, stays fast, and stays honest under load."
+  email: "devfekri@icloud.com"
+  location: "Root"
+  status: "Open to contracts"
+  github: "ifekri"
+  gitlab: "0xmdrza"
+  twitter: "-"
+  linkedin: "-"
+  telegram: "rootblock"
+
+# ------------------------------------------------------------
+# Live repository feeds
+# Both providers work without a token for public repos.
+# Set enabled: false on either provider to hide it.
+# source: "github" | "gitlab" | "both"
+# ------------------------------------------------------------
+repos:
+  source: "both"
+  home_limit: 4
+  exclude_forks: true
+  exclude_archived: true
+  sort_by: "updated" # updated | stars | name
+
+github:
+  enabled: true
+  username: "iFekri"
+  # Optional: set via GitHub Actions secret GH_TOKEN for higher rate limits
+  # and to include private repos you own. Leave blank for public-only.
+  token: ""
+  per_page: 100
+  # Repos to hide (case-insensitive names)
+  exclude:
+    - "ifekri.github.io"
+  # Prefer these repos first on the homepage (by exact name)
+  pinned: []
+
+gitlab:
+  enabled: true
+  username: "0xmdrza"
+  host: "https://gitlab.com"
+  token: ""
+  per_page: 100
+  exclude:
+    - "0xmdrza.gitlab.io"
+  pinned: ["libcrypto"]
+
+# Theme tokens (read by CSS via inline style)
+theme_mode: dark
+accent: "#E8A838"
+accent_name: "signal-amber"
+
+# Build
+permalink: /posts/:title/
+paginate: 6
+paginate_path: "/page/:num/"
+excerpt_separator: "<!--more-->"
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# SEO
+twitter:
+  username: "iFekri"
+  card: summary_large_image
+
+social:
+  name: "iFekri"
+  links:
+    - https://github.com/ifekri
+    - https://gitlab.com/0xmdrza
+    - https://twitter.com/
+    - https://linkedin.com/in/
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-gist
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - LICENSE
+  - CNAME
+  - .editorconfig
+  - .gitattributes
+  - Example
+  - .claude
+  - .bundle
+  - DEPLOYMENT.md
+  - CONTRIBUTING.md
+  - CHANGELOG.md
+  - docs
+
+# Defaults
+defaults:
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /posts/:title/
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/

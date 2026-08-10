@@ -1,0 +1,62 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+
+  <header class="post-head">
+    <div class="container container-narrow">
+      <div class="post-meta">
+        <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date: "%Y-%m-%d" }}
+        </time>
+        {% if page.categories.size > 0 %}
+        <span class="post-sep" aria-hidden="true">·</span>
+        <span class="post-cat">{{ page.categories | join: ", " }}</span>
+        {% endif %}
+        <span class="post-sep" aria-hidden="true">·</span>
+        <span class="post-read">{{ page.content | number_of_words | divided_by: 200 | ceil }} min read</span>
+      </div>
+
+      <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+
+      {% if page.description %}
+      <p class="post-description" itemprop="description">{{ page.description }}</p>
+      {% endif %}
+
+      {% if page.tags.size > 0 %}
+      <div class="post-tags">
+        {% for tag in page.tags %}
+        <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="post-tag">#{{ tag }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-body container container-narrow" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <footer class="post-foot container container-narrow">
+    <div class="post-nav">
+      {% if page.previous.url %}
+      <a class="post-nav-link post-nav-link--prev" href="{{ page.previous.url | relative_url }}">
+        <span class="post-nav-dir">← Previous</span>
+        <span class="post-nav-title">{{ page.previous.title }}</span>
+      </a>
+      {% else %}
+      <span></span>
+      {% endif %}
+
+      {% if page.next.url %}
+      <a class="post-nav-link post-nav-link--next" href="{{ page.next.url | relative_url }}">
+        <span class="post-nav-dir">Next →</span>
+        <span class="post-nav-title">{{ page.next.title }}</span>
+      </a>
+      {% else %}
+      <span></span>
+      {% endif %}
+    </div>
+  </footer>
+
+</article>

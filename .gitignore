@@ -1,0 +1,37 @@
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Bundler
+.bundle/
+vendor/bundle/
+vendor/cache/
+vendor/gems/
+vendor/ruby/
+Gemfile.lock
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editors
+.idea/
+.vscode/
+*.sublime-*
+
+# Env
+.env
+.env.*
+
+# Local
+*.log
+tmp/
+temp/
+
+# Local preview artifacts
+.preview/
