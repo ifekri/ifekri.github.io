@@ -1,8 +1,8 @@
 ---
 title: "Jenkins CI/CD for Python Libraries: Testing, PyPI, and GitHub Releases"
 date: 2026-08-18 11:20:00 +0300
-categories: [Pipelines, CI-CD, packages]
-tags: [python, ci-cd, pipeline, pypi, packages, build, jenkins, pip]
+categories: [Pipelines]
+tags: [python, pipeline, pypi, packages, build, jenkins, pip]
 description: "Set up a Jenkins pipeline that tests, packages, and publishes your Python library to PyPI, and builds PyInstaller executables for GitHub Releases."
 ---
 
